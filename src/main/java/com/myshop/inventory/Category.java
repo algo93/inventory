@@ -2,28 +2,29 @@ package com.myshop.inventory;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.Id;
+
+import java.util.UUID;
 
 @Entity
 @Table(name="category")
 public class Category {
 
     @Id
-    @GenericGenerator(name="x" ,strategy="IdGenerator")
-    @GeneratedValue (generator="x")
-    @Column(nullable=false, updatable=false)
-    private String categoryId;
+    @GeneratedValue (strategy=GenerationType.UUID)
+    @Column
+    private UUID id;
 
     @Column
     @Basic
+    @JoinColumn
     private String name;
 
-    public String getCategoryId() {
-        return categoryId;
+    public UUID getId() {
+        return id;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getName() {

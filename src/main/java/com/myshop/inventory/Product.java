@@ -4,15 +4,16 @@ package com.myshop.inventory;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "product")
 public class Product {
 
     @Id
-    @GenericGenerator(name = "stringIdGenerator", strategy = "IdGenerator")
-    @GeneratedValue()
-    @Column(name = "product_id", nullable = false, updatable = false)
-    private String productId;
+    @GeneratedValue (strategy=GenerationType.UUID)
+    @Column
+    private UUID id;
 
     @ManyToOne
     @JoinColumn
@@ -21,12 +22,12 @@ public class Product {
     @Column
     private String name;
 
-    public String getProductId() {
-        return productId;
+    public UUID getId() {
+        return id;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public Category getCategory() {
