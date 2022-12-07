@@ -1,29 +1,32 @@
 package com.myshop.inventory;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.Id;
+
+import java.util.List;
+import java.util.UUID;
+
+import static jakarta.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name="category")
 public class Category {
 
     @Id
-    @GenericGenerator(name="x" ,strategy="IdGenerator")
-    @GeneratedValue (generator="x")
-    @Column(nullable=false, updatable=false)
-    private String categoryId;
+    @GeneratedValue(strategy= GenerationType.UUID )
+    private UUID Id;
 
     @Column
-    @Basic
     private String name;
 
-    public String getCategoryId() {
-        return categoryId;
+    @OneToMany(mappedBy = "category" , cascade = ALL)
+    private List<Product> products;
+
+    public UUID getId() {
+        return Id;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public void setId(UUID id) {
+        Id = id;
     }
 
     public String getName() {
@@ -32,5 +35,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> getProduct() {
+        return products;
+    }
+
+    public void setProduct(List<Product> products) {
+        this.products = products;
     }
 }
