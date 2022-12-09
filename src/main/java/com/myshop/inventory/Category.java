@@ -1,9 +1,11 @@
 package com.myshop.inventory;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
+import java.util.List;
 import java.util.UUID;
+
+import static jakarta.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name="category")
@@ -19,6 +21,9 @@ public class Category {
     @JoinColumn
     private String name;
 
+    @OneToMany(mappedBy = "category" , cascade = ALL)
+    private List<Product> products;
+
     public UUID getId() {
         return id;
     }
@@ -33,5 +38,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> getProduct() {
+        return products;
+    }
+
+    public void setProduct(List<Product> products) {
+        this.products = products;
     }
 }
