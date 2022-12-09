@@ -1,4 +1,4 @@
-package com.myshop.inventory;
+package com.myshop.inventory.config;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

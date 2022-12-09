@@ -1,6 +1,8 @@
-package com.myshop.inventory;
+package com.myshop.inventory.product;
 
 
+import com.myshop.inventory.category.Category;
+import com.myshop.inventory.item.Item;
 import jakarta.persistence.*;
 
 import java.util.List;
