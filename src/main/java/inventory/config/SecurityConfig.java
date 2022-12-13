@@ -1,4 +1,4 @@
-package com.myshop.inventory.config;
+package inventory.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

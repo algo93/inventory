@@ -1,4 +1,4 @@
-package com.myshop.inventory.product;
+package inventory.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

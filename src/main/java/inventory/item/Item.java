@@ -1,6 +1,6 @@
-package com.myshop.inventory.item;
+package inventory.item;
 
-import com.myshop.inventory.product.Product;
+import inventory.product.Product;
 import jakarta.persistence.*;
 
 import java.util.Date;

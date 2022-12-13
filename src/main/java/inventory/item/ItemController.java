@@ -1,14 +1,16 @@
-package com.myshop.inventory.product;
+package inventory.item;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class ProductController {
-    @RequestMapping("/product")
+public class ItemController {
+    @RequestMapping("/item")
     @ResponseBody
-    public String giveProduct(){
-        return "take Product";
+    public String giveItem()
+    {
+        return "take Item";
     }
 }
+
