@@ -1,5 +1,6 @@
 package inventory.item;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import inventory.product.Product;
 import jakarta.persistence.*;
 
@@ -19,7 +20,7 @@ public class Item {
     private String price;
 
     @ManyToOne
-    @JoinColumn
+    @JsonIgnore
     private Product product;
 
     @Column(name = "mfg_date")

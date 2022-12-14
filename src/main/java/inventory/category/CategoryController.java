@@ -7,32 +7,33 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/categories")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping("/categories")
-    public List<Category> giveCategory(){
+    @GetMapping
+    public List<Category> getAllCategory(){
         return categoryService.getAllCategory();
     }
 
-    @RequestMapping(value = "/categories/{id}")
-    public Category getCategory(@PathVariable UUID id){
+    @GetMapping("/{id}")
+    public Category getCategoryById(@PathVariable UUID id){
         return categoryService.getCategoryById(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/categories")
+    @PostMapping
     public void addCategory(@RequestBody Category category){
         categoryService.addCategory(category);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/categories/{id}")
+    @PutMapping("/{id}")
     public void updateCategory(@RequestBody Category category, @PathVariable UUID id){
         categoryService.updateCategory(category , id);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/categories/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable UUID id){
         categoryService.deleteCategory(id);
     }

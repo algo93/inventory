@@ -1,14 +1,41 @@
 package inventory.product;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/products")
 public class ProductController {
-    @RequestMapping("/product")
-    @ResponseBody
-    public String giveProduct(){
-        return "take Product";
+
+    @Autowired
+    private ProductService productService;
+
+    @GetMapping
+    public List<Product> getAllProduct() {
+        return productService.getAllProduct();
     }
+
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable UUID id) {
+        return productService.getProductById(id);
+    }
+
+    @PostMapping
+    public void addProduct(@RequestBody Product product) {
+        productService.addProduct(product);
+    }
+
+    @PutMapping("/{id}")
+    public void updateProduct(@RequestBody Product product, @PathVariable UUID id) {
+        productService.updateProduct(product, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable UUID id) {
+        productService.deleteProduct(id);
+    }
+
 }

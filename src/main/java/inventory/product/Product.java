@@ -1,6 +1,7 @@
 package inventory.product;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import inventory.category.Category;
 import inventory.item.Item;
 import jakarta.persistence.*;
@@ -18,7 +19,7 @@ public class Product {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn
+    @JsonIgnore
     private Category category;
 
     @Column

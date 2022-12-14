@@ -17,7 +17,7 @@ public class Category {
     @Column
     private UUID id;
 
-    @Column
+    @Column(unique = true)
     @Basic
     @JoinColumn
     private String name;
