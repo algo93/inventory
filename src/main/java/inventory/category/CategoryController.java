@@ -23,6 +23,11 @@ public class CategoryController {
         return categoryService.getCategoryById(id);
     }
 
+    @GetMapping("/name={columnValue}")
+    public Category getCategoryByName(@PathVariable String columnValue){
+        return categoryService.getCategoryByName(columnValue);
+    }
+
     @PostMapping
     public void addCategory(@RequestBody Category category){
         categoryService.addCategory(category);
